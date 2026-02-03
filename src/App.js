@@ -1,17 +1,16 @@
 import Header from "./components/Header";
-import Nav from "./components/Nav";
 import Main from "./components/Main";
 import Footer from "./components/Footer";
+import "./App.css";
 
 
 function App() {
   return (
-  <>
-<Header logoSrc="/icons_assets/logo.svg" logoAlt="Little Lemon logo" />
-  <Nav />
-  <Main />
-  <Footer />
-  </>
+    <div className="page">
+      <Header logoSrc="/icons_assets/logo.svg" logoAlt="Little Lemon logo" />
+      <Main />
+      <Footer />
+    </div>
   );
 }
 

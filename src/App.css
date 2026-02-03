@@ -1,0 +1,650 @@
+:root{
+  --font-brand: 'Markazi Text', serif;
+  --font-body: 'Karla', sans-serif;
+
+  --container: 1200px;
+  --nav-gap: 40px;
+  --header-y: 18px;
+
+  --hero-bg: #495E57;
+  --hero-accent: #F4CE14;
+}
+
+/* ===== BASE ELEMENT STYLES (Coursera checklist) ===== */
+
+/* 1) Типографика: h1–h6, p, span */
+:where(h1,h2,h3,h4,h5,h6){
+  font-family: var(--font-brand, inherit);
+  margin: 0;
+  line-height: 1.1;
+}
+
+:where(p){
+  margin: 0;
+  font-family: var(--font-body, inherit);
+  line-height: 1.5;
+}
+
+:where(span){
+  font: inherit;
+}
+
+/* 2) Навигация и списки: nav, ul, li */
+:where(nav){
+  display: block; /* не навязываем flex глобально, чтобы не сломать */
+}
+
+:where(ul){
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+:where(li){
+  margin: 0;
+  padding: 0;
+}
+
+/* 3) Картинки: img */
+:where(img){
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+
+
+/* если у тебя .page даёт лишние отступы сверху — убери */
+.page{
+  padding: 0;                 /* важно для “как в фигме” */
+  font-family: var(--font-brand);
+}
+
+/* ===== HEADER ===== */
+.site-header{
+  background:#fff;
+  padding: var(--header-y) 0;
+}
+
+.site-header__inner{
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 24px;
+
+  display: grid;
+  grid-template-columns: auto 1fr; /* logo | center area */
+  align-items: center;
+}
+
+/* логотип слева */
+.site-header__brand{
+  display: inline-flex;
+  align-items: center;
+}
+
+.site-header__logo{
+  height: 50px;   /* верни как было (или 46 если в фигме крупнее) */
+  width: auto;
+  display: block;
+}
+
+/* навигация строго по центру контейнера */
+.site-header__nav{
+  justify-self: center;       /* вот это даёт идеальный центр как в Figma */
+}
+
+.site-header__menu{
+  list-style:none;
+  display:flex;
+  gap: var(--nav-gap);
+  margin:0;
+  padding:0;
+  align-items:center;
+}
+
+.site-header__menu a{
+  font-family: var(--font-brand);
+  font-size: 25px;     /* как ты говорил */
+  font-weight: 500;    /* medium */
+  line-height: 1;
+  letter-spacing: 0;   /* если надо — потом выставим */
+  text-decoration: none;
+  color: #111;
+}
+
+
+
+
+/* ===== HERO ===== */
+.hero{
+  background: var(--hero-bg);
+  padding: 40px 0 40px;        /* воздух снизу */
+  position: relative;
+  z-index: 2;
+  overflow: visible;
+}
+
+.hero__inner{
+  max-width: var(--container);
+  margin: 0 auto;
+
+  /* левый как было, правый больше — картинка “уедет” влево */
+  padding-left: 200px;
+  padding-right: 200px;
+
+  display: flex;
+  align-items: flex-start;
+  gap: 0px;                   /* расстояние между текстом и картинкой */
+}
+
+/* ===== CONTENT ===== */
+.hero__content{
+  flex: 0 0 300px;             /* фиксируем ширину колонки */
+  max-width: 420px;
+}
+
+/* typography */
+.hero h1{
+  margin: 0;
+  font-family: var(--font-brand);
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 1;
+  color: var(--hero-accent);
+}
+
+.hero h2{
+  margin: 0;
+  font-family: var(--font-brand);
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 1.1;
+  color: #fff;
+}
+
+.hero p{
+  margin: 16px 0 0;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  color: #EDEFEE;
+  max-width: 290px;
+}
+
+/* button */
+.hero .btn{
+  margin-top: 24px;
+  padding: 12px 24px;
+  border: 0;
+  border-radius: 16px;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 18px;
+  color: #000;
+  background: var(--hero-accent);
+}
+
+/* ===== HERO IMAGE ===== */
+.hero__media{
+  flex: 0 0 auto;
+  margin-left: auto;           /* прижимаем к правому ВНУТРЕННЕМУ краю (с padding-right) */
+  margin-top: 12px;
+  margin-bottom: -130px;       /* оверлап на следующий блок */
+  z-index: 3;
+}
+
+.hero__img{
+  width: 600px;
+  height: 350px;
+  display: block;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.22);
+}
+
+
+
+
+
+/* ===== SPECIALS ===== */
+.specials{
+  background: #fff;
+  padding: 72px 0; /* подгони потом */
+}
+
+.specials__inner{
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.specials__top{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+.specials__title{
+  margin: 0;
+  font-family: var(--font-brand);
+  font-weight: 600; /* semibold */
+  font-size: 48px;  /* подгони под макет */
+  line-height: 1;
+  color: #000;
+}
+
+.specials__grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+/* Card */
+.card{
+  background: #EDEFEE;
+  border-radius: 16px;
+  overflow: hidden;
+
+  display: flex;              /* + */
+  flex-direction: column;     /* + */
+  height: 100%;               /* + (важно для grid) */
+}
+
+.card__img{
+  width: 100%;
+  height: 200px;         /* подгони */
+  object-fit: cover;
+  display: block;
+}
+
+
+.card__body{
+  padding: 20px;
+
+  display: flex;              /* + */
+  flex-direction: column;     /* + */
+  flex: 1;                    /* + */
+}
+
+.card__head{
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.card__title{
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 700; /* karla 18 bold */
+  font-size: 18px;
+}
+
+.card__price{
+  font-family: var(--font-body);
+  font-weight: 500; /* medium */
+  font-size: 15px;
+  color: #EE9972; /* в макете цена розово-оранжевая */
+}
+
+.card__text{
+  margin: 0 0 18px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #333;
+}
+
+
+
+.btn{
+  border: 0;
+  border-radius: 16px;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-weight: 700;
+  background: transparent;
+}
+
+.btn--primary{
+  padding: 12px 24px;
+  font-size: 18px;
+  color: #000;
+  background: var(--hero-accent);
+}
+
+
+/* CTA */
+.card__cta{
+  display: inline-block;
+
+  margin-top: auto;           /* ВМЕСТО 16px — прижмёт вниз */
+  align-self: flex-start;     /* чтобы кнопка не растягивалась */
+
+  padding: 8px 16px;
+  font-size: 15px;
+  border-radius: 12px;
+  text-decoration: none;
+}
+
+
+
+
+
+/* ===== TESTIMONIALS ===== */
+.testimonials {
+  background: #495E57;
+  padding: 80px 0 96px;
+}
+
+.testimonials__inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.testimonials__title {
+  margin: 0 0 44px;
+  text-align: center;
+  font-family: var(--font-brand);
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 1;
+  color: #F4CE14;
+}
+
+.testimonials__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 28px;
+  align-items: start;
+}
+
+/* ===== T-CARD ===== */
+.tcard {
+  position: relative;
+  height: 260px;          /* если в фигме чуть выше/ниже — подгони 250-280 */
+  background: transparent;
+  border: 0;
+  padding: 0;
+}
+
+/* PNG-рамка */
+.tcard::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url(../public/icons_assets/rec_frame.png) center / 100% 100% no-repeat;
+  pointer-events: none;
+}
+
+/* КЛЮЧ: безопасная зона под контент (попадание как в макете) */
+.tcard__content {
+  position: relative;
+  z-index: 1;
+
+  /* под rec_frame.png обычно нужно больше слева/сверху */
+  padding: 22px 26px 22px 26px;
+
+  height: 100%;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* Stars */
+.tcard__stars {
+  display: inline-flex;
+  gap: 4px;
+  line-height: 1;
+  margin: 0 0 14px;   /* как в макете: сверху чуть “прилипает”, потом отступ */
+}
+
+.tcard__star {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.tcard__star--full { color: #F4CE14; }
+.tcard__star--empty { color: #111; opacity: 0.9; }
+
+/* Avatar + name */
+.tcard__top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0 0 12px;
+}
+
+.tcard__avatar {
+  width: 56px;
+  height: 67px;
+  border-radius: 14px;
+  object-fit: cover;
+  display: block;
+}
+
+/* имя как в Figma — крупное и “воздушное” */
+.tcard__name {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.1;
+  color: #111;
+}
+
+/* quote — узкий блок, легкий шрифт, не заполняет весь низ */
+.tcard__quote {
+  margin: 0;
+ margin-top: 2%;
+  font-family: var(--font-body);
+  font-weight: 300;        /* Karla Light */
+  font-size: 16px;
+  line-height: 23px;
+  color: #333;
+
+  max-width: 210px;        /* КЛЮЧ: делает как в макете */
+
+  /* чтобы текст выглядел “как сверху”, а низ оставался пустым */
+  flex: 0 0 auto;
+
+  /* если одна карточка “длиннее” — обрежет как в макете */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  overflow: hidden;
+}
+
+
+
+/* ===== ABOUT (Our Story) ===== */
+.about{
+  background: #fff;
+  padding: 56px 0 72px; /* как в фигме: секция выше, но без огромного низа */
+}
+
+.about__inner{
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 24px;
+
+  display: grid;
+  grid-template-columns: 1fr 600px; /* правый блок чуть уже, чтобы не было огромной пустоты */
+  gap: 84px;                        /* больше воздуха между текстом и фото как в фигме */
+  align-items: start;               /* НЕ центрируем по вертикали */
+}
+
+.about__content{
+  max-width: 620px;
+  padding-top: 10px; /* легкий подъём как в фигме */
+}
+
+/* Markazi */
+.about__title{
+  margin: 0;
+  font-family: var(--font-brand);
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 1;
+  color: #495E57;
+}
+
+.about__subtitle{
+  margin-top: 0;
+  font-family: var(--font-brand);
+  font-weight: 600;
+  font-size: 38px;
+  line-height: 1.1;
+  color: #F4CE14;
+}
+
+/* Подложка под текст (делаем как в фигме: шире, но чуть компактнее по тексту) */
+.about__card{
+  background: #EDEFEE;
+  border-radius: 16px;
+  padding: 26px 30px;
+  max-width: 600px;          /* ключ: относительный размер как в фигме */
+}
+
+/* Karla */
+.about__text{
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 20px;           /* ключ: у тебя было 20 => подложка становилась “не как в фигме” */
+  line-height: 35px;
+  color: #333;
+}
+
+.about__text + .about__text{
+  margin-top: 18px;
+}
+
+/* ===== Images (already framed) ===== */
+.about__media{
+  position: relative;
+  width: 600px;
+  height: 520px;      /* ключ: достаточно, чтобы ЖЁЛТАЯ не лезла в футер */
+  overflow: visible;
+}
+
+/* Увеличенные “слоты” под изображения (картинки визуально крупнее как в фигме) */
+.about__shot{
+  position: absolute;
+  width: 340px;       /* крупнее */
+  height: 445px;      /* крупнее */
+}
+
+.about__shot img{
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain; /* рамка не режется */
+  user-select: none;
+  pointer-events: none;
+}
+
+/* ЖЁЛТАЯ (фон) — ниже/левее, но ВНУТРИ контейнера */
+.about__shot--back{
+  left: 120px;
+  top: 95px;          /* ключ: подняли => больше не “убегает” вниз */
+  z-index: 1;
+}
+
+/* ЗЕЛЁНАЯ (верх) — выше/правее */
+.about__shot--front{
+  left: 290px;
+  top: 0px;
+  z-index: 2;
+}
+
+
+
+
+
+
+
+
+/* ===== FOOTER ===== */
+.site-footer{
+  background: #495E57;
+  padding: 44px 0 52px;          /* компактная высота как в фигме */
+  color: #fff;
+}
+
+.site-footer__inner{
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 24px;
+
+  display: grid;
+  grid-template-columns: 210px repeat(3, 1fr); /* логотип ближе к колонкам */
+  gap: 48px;                                   /* аккуратный воздух */
+  align-items: start;
+}
+
+/* ===== BRAND / LOGO ===== */
+.site-footer__brand{
+  margin-top: 10px;            /* оптическое выравнивание */
+}
+
+.site-footer__logo{
+  width: 125px;                /* как в фигме */
+  height: auto;
+  display: block;
+  opacity: 0.9;
+}
+
+/* ===== COLUMN TITLES ===== */
+.site-footer__title{
+  margin: 0 0 14px;
+  font-family: var(--font-brand); /* Markazi */
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.1;
+  color: #fff;
+}
+
+/* ===== LISTS ===== */
+.site-footer__list{
+  list-style: none;            /* убираем точки */
+  margin: 0;
+  padding: 0;
+
+  display: grid;
+  gap: 10px;
+}
+
+.site-footer__list a,
+.site-footer__list span{
+  font-family: var(--font-body); /* Karla */
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.35;
+  color: rgba(255,255,255,0.82);
+  text-decoration: none;
+}
+
+.site-footer__list a:hover{
+  color: #fff;
+  text-decoration: underline;
+}
+
+
+
+
+
+
+
+
+
+
+
+
